@@ -16,10 +16,10 @@ public class Main {
         StatementPrinter printer = new StatementPrinter();
 
         try {
-            transactionService.performTransaction(account, 1000, "13-12-2025", "DEPOSIT");
-            transactionService.performTransaction(account, 2000, "13-12-2025", "DEPOSIT");
+            transactionService.performTransaction(account, 1000, "30-12-2026", "DEPOSIT");
+            transactionService.performTransaction(account, 2000, "30-12-2026", "DEPOSIT");
 
-            transactionService.performTransaction(account, 500, "14-12-2025", "WITHDRAW");
+            transactionService.performTransaction(account, 500, "30-12-2026", "WITHDRAW");
 
         } catch (InvalidAmountException | InsufficientFundsException | InvalidDateException e) {
             System.out.println("Error: " + e.getMessage());
