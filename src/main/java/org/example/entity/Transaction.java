@@ -1,17 +1,36 @@
 package org.example.entity;
 
-public class Transaction {
-    private int amount;
-    private String date;
-    private String type;
+import java.time.LocalDate;
 
-    public Transaction(int amount, String date, String type) {
-        this.amount = amount;
+public class Transaction {
+    private final LocalDate date;
+    private final int amount;
+    private final TransactionType type;
+
+    public enum TransactionType {
+        DEPOSIT, WITHDRAWAL
+    }
+
+    public Transaction(LocalDate date, int amount, TransactionType type) {
         this.date = date;
+        this.amount = amount;
         this.type = type;
     }
 
-    public int getAmount() { return amount; }
-    public String getDate() { return date; }
-    public String getType() { return type; }
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public TransactionType getType() {
+        return type;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{date=" + date + ", amount=" + amount + ", type=" + type + "}";
+    }
 }
