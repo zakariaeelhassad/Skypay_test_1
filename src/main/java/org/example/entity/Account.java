@@ -1,25 +1,35 @@
 package org.example.entity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Account {
-    private List<Transaction> transactions = new ArrayList<>();
-    private int balance = 0;
+    private final ArrayList<Transaction> transactions;
+    private int balance;
+
+    public Account() {
+        this.transactions = new ArrayList<>();
+        this.balance = 0;
+    }
+
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
+
+        if (transaction.getType() == Transaction.TransactionType.DEPOSIT) {
+            balance += transaction.getAmount();
+        } else {
+            balance -= transaction.getAmount();
+        }
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return new ArrayList<>(transactions);
+    }
 
     public int getBalance() {
         return balance;
     }
 
-    public void updateBalance(int amount) {
-        balance += amount;
-    }
-
-    public void addTransaction(Transaction t) {
-        transactions.add(t);
-    }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
+    public void deductBalance(int amount) {
+        this.balance -= amount;
     }
 }
